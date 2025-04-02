@@ -5,4 +5,5 @@ module org.sysmedicamentos {
 
     opens org.sysmedicamentos to javafx.fxml;
     exports org.sysmedicamentos;
+    opens org.sysmedicamentos.controller to javafx.fxml;
 }

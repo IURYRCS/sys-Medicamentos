@@ -5,17 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="560a36c7-fbc6-453a-a9ee-907053ff85b5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/sysmedicamentos/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/sysmedicamentos/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/model/entity/Fornecedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/model/entity/Fornecedor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/model/entity/Medicamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/model/entity/Medicamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/utils/PathFXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/utils/PathFXML.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/view/MainView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2v95gFkYnKnfT6DXYiQNOp4n4Om" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -26,9 +43,38 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Unifan/Documents/AQUIII/CalculadoraIMC"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Unifan\Documents\AQUIII\sys-Medicamentos\src\main\java" />
+      <recent name="C:\Users\Unifan\Documents\AQUIII\sys-Medicamentos\src\main\resources" />
+      <recent name="C:\Users\Unifan\Documents\AQUIII\sys-Medicamentos\src\main" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.sysmedicamentos.MainApp" />
+      <module name="sys-Medicamentos" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.sysmedicamentos.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainApp" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
