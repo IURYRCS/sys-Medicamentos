@@ -12,7 +12,7 @@ public class Medicamento {
     private int quantidadeEstoque;
     private BigDecimal preco;
     private boolean controlado;
-    private Fornecedor fornecedor;
+    private String fornecedor;
 
     //CONTRUTORES
 
@@ -28,7 +28,7 @@ public class Medicamento {
         this.quantidadeEstoque = quantidadeEstoque;
         this.preco = preco;
         this.controlado = controlado;
-        this.fornecedor = fornecedor;
+        this.fornecedor = String.valueOf(fornecedor);
     }
 
     //GETTERS E SETTERS
@@ -86,8 +86,8 @@ public class Medicamento {
         return preco;
     }
 
-    public void setPreco(BigDecimal preco) {
-        this.preco = preco;
+    public void setPreco(String preco) {
+        this.preco = new BigDecimal(preco);
     }
 
     public boolean isControlado() {
@@ -98,11 +98,11 @@ public class Medicamento {
         this.controlado = controlado;
     }
 
-    public Fornecedor getFornecedor() {
+    public String getFornecedor() {
         return fornecedor;
     }
 
-    public void setFornecedor(Fornecedor fornecedor) {
+    public void setFornecedor(String fornecedor) {
         this.fornecedor = fornecedor;
     }
     //METODOS

@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="560a36c7-fbc6-453a-a9ee-907053ff85b5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/MainApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/model/entity/Fornecedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/model/entity/Fornecedor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/model/entity/Medicamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/model/entity/Medicamento.java" afterDir="false" />
@@ -34,20 +32,26 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2v95gFkYnKnfT6DXYiQNOp4n4Om" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Unifan/Documents/AQUIII/CalculadoraIMC"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.MainApp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Iury/AppData/Local/SceneBuilder/SceneBuilder.exe&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Unifan\Documents\AQUIII\sys-Medicamentos\src\main\java" />

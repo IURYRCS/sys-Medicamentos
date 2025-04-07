@@ -15,33 +15,39 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="409.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sysmedicamentos.controller.MainController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sysmedicamentos.controller.MainController">
    <children>
-      <VBox layoutX="-1.0" prefHeight="440.0" prefWidth="637.0">
+      <VBox layoutX="-1.0" prefHeight="598.0" prefWidth="950.0">
          <children>
             <HBox prefHeight="12.0" prefWidth="637.0" />
-            <HBox prefHeight="420.0" prefWidth="600.0">
+            <HBox prefHeight="584.0" prefWidth="950.0">
                <children>
-                  <VBox prefHeight="413.0" prefWidth="291.0">
+                  <VBox prefHeight="584.0" prefWidth="314.0">
                      <children>
-                        <TabPane prefHeight="434.0" prefWidth="285.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane prefHeight="589.0" prefWidth="291.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
                             <Tab text="MEDICAMENTO">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="345.0" prefWidth="285.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="291.0">
                                        <children>
-                                          <VBox prefHeight="341.0" prefWidth="282.0">
+                                          <VBox prefHeight="558.0" prefWidth="290.0">
                                              <children>
-                                                <GridPane prefHeight="344.0" prefWidth="278.0">
+                                                <GridPane prefHeight="492.0" prefWidth="290.0">
                                                   <columnConstraints>
                                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                   </columnConstraints>
                                                   <rowConstraints>
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -53,74 +59,113 @@
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                   </rowConstraints>
                                                    <children>
-                                                      <Label prefHeight="17.0" prefWidth="285.0" text="Nome">
+                                                      <Label prefHeight="17.0" prefWidth="285.0" text="Nome" GridPane.rowIndex="2">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="12.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <TextField GridPane.rowIndex="1">
+                                                      <TextField fx:id="txtNome" GridPane.rowIndex="3">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <TextField GridPane.rowIndex="3">
+                                                      <TextField fx:id="txtDescricao" GridPane.rowIndex="5">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <TextField GridPane.rowIndex="5">
+                                                      <TextField fx:id="txtPricipioAtivo" GridPane.rowIndex="7">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <TextField GridPane.rowIndex="7">
+                                                      <TextField fx:id="txtDataValidade" GridPane.rowIndex="9">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <TextField GridPane.rowIndex="9">
+                                                      <TextField fx:id="txtQuantidade" GridPane.rowIndex="11">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <TextField GridPane.rowIndex="11">
+                                                      <TextField fx:id="txtPreco" GridPane.rowIndex="13">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <TextField GridPane.rowIndex="13">
+                                                      <TextField fx:id="txtTipo" GridPane.rowIndex="15">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <Label prefHeight="17.0" prefWidth="290.0" text="Descrição" GridPane.rowIndex="2">
+                                                      <Label prefHeight="17.0" prefWidth="290.0" text="Descrição" GridPane.rowIndex="4">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="12.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <Label prefHeight="17.0" prefWidth="291.0" text="Principio Ativo" GridPane.rowIndex="4">
+                                                      <Label prefHeight="17.0" prefWidth="291.0" text="Principio Ativo" GridPane.rowIndex="6">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="12.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <Label prefHeight="17.0" prefWidth="312.0" text="Data de Validade" GridPane.rowIndex="6">
+                                                      <Label prefHeight="17.0" prefWidth="312.0" text="Data de Validade" GridPane.rowIndex="8">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="12.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <Label prefHeight="17.0" prefWidth="291.0" text="Quantidade" GridPane.rowIndex="8">
+                                                      <Label prefHeight="17.0" prefWidth="291.0" text="Quantidade" GridPane.rowIndex="10">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="12.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <Label prefHeight="17.0" prefWidth="303.0" text="Preço" GridPane.rowIndex="10">
+                                                      <Label prefHeight="17.0" prefWidth="303.0" text="Preço" GridPane.rowIndex="12">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="12.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <Label prefHeight="17.0" prefWidth="315.0" text="Tipo" GridPane.rowIndex="12">
+                                                      <Label prefHeight="17.0" prefWidth="315.0" text="Tipo" GridPane.rowIndex="14">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="12.0" right="1.0" top="1.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Fornecedor" GridPane.rowIndex="16">
+                                                         <GridPane.margin>
+                                                            <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <TextField fx:id="txtFornecedor" GridPane.rowIndex="17">
+                                                         <GridPane.margin>
+                                                            <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="txtCodigo" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <HBox prefHeight="101.0" prefWidth="290.0" GridPane.rowIndex="19">
+                                                         <children>
+                                                            <Button fx:id="btnMedNovo" mnemonicParsing="false" onAction="#onBtnMedNovo" prefHeight="30.0" prefWidth="100.0" text="NOVO">
+                                                               <HBox.margin>
+                                                                  <Insets bottom="5.0" left="5.0" right="10.0" top="30.0" />
+                                                               </HBox.margin>
+                                                            </Button>
+                                                            <Button fx:id="btnMedSalvar" mnemonicParsing="false" onAction="#onBtnSalvarMed" prefHeight="30.0" prefWidth="100.0" text="SALVAR">
+                                                               <HBox.margin>
+                                                                  <Insets bottom="5.0" left="5.0" right="10.0" top="30.0" />
+                                                               </HBox.margin>
+                                                            </Button>
+                                                            <Button fx:id="btnMedExcluir" mnemonicParsing="false" onAction="#onBtnExcluirMed" prefHeight="30.0" prefWidth="100.0" text="EXCLUIR">
+                                                               <HBox.margin>
+                                                                  <Insets bottom="5.0" left="5.0" right="10.0" top="30.0" />
+                                                               </HBox.margin>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
+                                                      <Label text="Codigo">
+                                                         <GridPane.margin>
+                                                            <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </Label>
                                                    </children>
@@ -135,13 +180,14 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <VBox prefHeight="341.0" prefWidth="282.0">
+                                          <VBox prefHeight="381.0" prefWidth="282.0">
                                              <children>
-                                                <GridPane prefHeight="344.0" prefWidth="278.0">
+                                                <GridPane prefHeight="357.0" prefWidth="282.0">
                                                    <columnConstraints>
                                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                    </columnConstraints>
                                                    <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -161,32 +207,32 @@
                                                             <Insets bottom="1.0" left="12.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <TextField GridPane.rowIndex="1">
+                                                      <TextField fx:id="txtCNPJ" GridPane.rowIndex="1">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <TextField GridPane.rowIndex="3">
+                                                      <TextField fx:id="txtRazaoSocial" GridPane.rowIndex="3">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <TextField GridPane.rowIndex="5">
+                                                      <TextField fx:id="txtTelefone" GridPane.rowIndex="5">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <TextField GridPane.rowIndex="7">
+                                                      <TextField fx:id="txtEmail" GridPane.rowIndex="7">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <TextField GridPane.rowIndex="9">
+                                                      <TextField fx:id="txtCidade" GridPane.rowIndex="9">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <TextField GridPane.rowIndex="11">
+                                                      <TextField fx:id="txtEstado" GridPane.rowIndex="11">
                                                          <GridPane.margin>
                                                             <Insets bottom="1.0" left="10.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
@@ -216,6 +262,25 @@
                                                             <Insets bottom="1.0" left="12.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </Label>
+                                                      <HBox prefHeight="68.0" prefWidth="282.0" GridPane.rowIndex="12">
+                                                         <children>
+                                                            <Button fx:id="btnFornNovo" mnemonicParsing="false" onAction="#onBtnFornNovo" prefHeight="30.0" prefWidth="100.0" text="NOVO">
+                                                               <HBox.margin>
+                                                                  <Insets bottom="5.0" left="5.0" right="10.0" top="30.0" />
+                                                               </HBox.margin>
+                                                            </Button>
+                                                            <Button fx:id="btnFornSalvar" mnemonicParsing="false" onAction="#onBtnSalvarForn" prefHeight="30.0" prefWidth="100.0" text="SALVAR">
+                                                               <HBox.margin>
+                                                                  <Insets bottom="5.0" left="5.0" right="10.0" top="30.0" />
+                                                               </HBox.margin>
+                                                            </Button>
+                                                            <Button fx:id="btnFornExcluir" mnemonicParsing="false" onAction="#onBtnExcluirForn" prefHeight="30.0" prefWidth="100.0" text="EXCLUIR">
+                                                               <HBox.margin>
+                                                                  <Insets bottom="5.0" left="5.0" right="10.0" top="30.0" />
+                                                               </HBox.margin>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
                                                    </children>
                                                 </GridPane>
                                              </children>
@@ -226,73 +291,64 @@
                             </Tab>
                           </tabs>
                         </TabPane>
-                        <HBox prefHeight="27.0" prefWidth="279.0">
-                           <children>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" text="NOVO">
-                                 <HBox.margin>
-                                    <Insets bottom="1.0" left="5.0" right="5.0" top="15.0" />
-                                 </HBox.margin>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" text="SALVAR">
-                                 <HBox.margin>
-                                    <Insets bottom="1.0" left="5.0" right="5.0" top="15.0" />
-                                 </HBox.margin>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="57.0" text="LISTAR">
-                                 <HBox.margin>
-                                    <Insets bottom="1.0" left="5.0" right="5.0" top="15.0" />
-                                 </HBox.margin>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="EXCLUIR">
-                                 <HBox.margin>
-                                    <Insets bottom="1.0" left="5.0" right="5.0" top="15.0" />
-                                 </HBox.margin>
-                              </Button>
-                           </children>
-                        </HBox>
                      </children>
                   </VBox>
-                  <VBox prefHeight="409.0" prefWidth="371.0">
+                  <VBox prefHeight="584.0" prefWidth="633.0">
                      <children>
-                        <TableView prefHeight="269.0" prefWidth="362.0">
+                        <TableView fx:id="tbMedicamento" prefHeight="269.0" prefWidth="362.0">
                           <columns>
-                            <TableColumn prefWidth="29.0" text="ID" />
-                            <TableColumn prefWidth="112.0" text="NOME" />
-                              <TableColumn prefWidth="61.0" text="VAL" />
-                              <TableColumn prefWidth="58.0" text="PREÇO" />
-                              <TableColumn prefWidth="47.0" text="QUANT" />
-                              <TableColumn prefWidth="62.0" text="TIPO" />
+                            <TableColumn fx:id="codigoField" prefWidth="60.0" text="CODIGO" />
+                            <TableColumn fx:id="nomeField" prefWidth="190.0" text="NOME" />
+                              <TableColumn fx:id="validadeField" prefWidth="63.0" text="VAL" />
+                              <TableColumn fx:id="precoField" prefWidth="55.0" text="PREÇO" />
+                              <TableColumn fx:id="estoqueField" prefWidth="66.0" text="ESTOQUE" />
+                              <TableColumn fx:id="tipoField" prefWidth="90.0" text="CONTROLADO" />
+                              <TableColumn fx:id="fornecedorField" prefWidth="106.0" text="FORNECEDOR" />
                           </columns>
                         </TableView>
                         <HBox prefHeight="116.0" prefWidth="352.0">
                            <children>
-                              <VBox prefHeight="114.0" prefWidth="128.0">
+                              <VBox prefHeight="140.0" prefWidth="138.0">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="114.0" text="CARREGAR">
+                                    <Button fx:id="btnCarregar" mnemonicParsing="false" onAction="#onBtnCarregar" prefHeight="56.0" prefWidth="114.0" text="CARREGAR">
                                        <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
+                                          <Insets bottom="5.0" left="10.0" right="5.0" top="15.0" />
                                        </VBox.margin>
                                     </Button>
                                  </children>
                               </VBox>
-                              <VBox prefHeight="140.0" prefWidth="231.0">
+                              <VBox prefHeight="140.0" prefWidth="166.0">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="FILTRAR POR TIPO">
+                                    <Label fx:id="labelResultadoAqui" prefHeight="140.0" prefWidth="167.0">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="140.0" prefWidth="212.0">
+                                 <children>
+                                    <Button fx:id="btnFiltrarControlados" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="LISTAR CONTROLADOS">
                                        <VBox.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </VBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="PROXIMO VENCIMENTO">
+                                    <Button fx:id="btnFiltrarNaoControlados" mnemonicParsing="false" onAction="#onBtnListarNaoControlados" prefHeight="30.0" prefWidth="200.0" text="LISTAR NÃO CONTROLADOS">
                                        <VBox.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </VBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="ESTOQUE POR FORNECEDOR">
+                                    <Button fx:id="btnProximoVencimento" mnemonicParsing="false" onAction="#onBtnProximoVencimento" prefHeight="30.0" prefWidth="200.0" text="PROXIMO VENCIMENTO">
                                        <VBox.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </VBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="ESTOQUE BAIXO">
+                                    <Button fx:id="btnEstoqueFornecedor" mnemonicParsing="false" onAction="#onBtnCalcularValorTotalEstoque" prefHeight="30.0" prefWidth="200.0" text="TOTAL POR FORNECEDOR">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Button fx:id="btnEstoqueBaixo" mnemonicParsing="false" onAction="#onBtnFiltrarEstoqueBaixo" prefHeight="30.0" prefWidth="200.0" text="ESTOQUE BAIXO">
                                        <VBox.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </VBox.margin>

@@ -21,7 +21,6 @@ public class Fornecedor {
         this.cidade = cidade;
         this.estado = estado;
     }
-
     // GETTERS E SETTERS
 
 
@@ -72,7 +71,6 @@ public class Fornecedor {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    // METODOS
 
     @Override
     public String toString() {

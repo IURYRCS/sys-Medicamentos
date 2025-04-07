@@ -1,20 +1,25 @@
 package org.sysmedicamentos.controller;
 
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.css.StyleableObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.sysmedicamentos.model.entity.Fornecedor;
 import org.sysmedicamentos.model.entity.Medicamento;
 
+import java.io.*;
 import java.math.BigDecimal;
 import java.net.URL;
-import java.text.SimpleDateFormat;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.stream.Collectors;
+
 
 public class MainController implements Initializable {
     private List<Medicamento> medicamentoList;
@@ -22,6 +27,8 @@ public class MainController implements Initializable {
     private Medicamento medicamento;
     private Fornecedor fornecedor;
 
+    @FXML
+    private TextField txtCodigo;
     @FXML
     private TextField txtNome;
     @FXML
@@ -48,33 +55,10 @@ public class MainController implements Initializable {
     private TextField txtCidade;
     @FXML
     private TextField txtEstado;
-
     @FXML
-    private Label lbNome;
+    private TextField txtFornecedor;
     @FXML
-    private Label lbDescricao;
-    @FXML
-    private Label lbPricipioAtivo;
-    @FXML
-    private Label lbDataValidade;
-    @FXML
-    private Label lbQuantidade;
-    @FXML
-    private Label lbPreco;
-    @FXML
-    private Label lbTipo;
-    @FXML
-    private Label lbCNPJ;
-    @FXML
-    private Label lbRazaoSocial;
-    @FXML
-    private Label lbTelefone;
-    @FXML
-    private Label lbEmail;
-    @FXML
-    private Label lbCidade;
-    @FXML
-    private Label lbEstado;
+    private Label labelResultadoAqui;
 
     @FXML
     private Button btnMedNovo;
@@ -93,7 +77,9 @@ public class MainController implements Initializable {
     @FXML
     private Button btnCarregar;
     @FXML
-    private Button btnFiltrarTipo;
+    private Button btnFiltrarControlados;
+    @FXML
+    private Button btnFiltrarNaoControlados;
     @FXML
     private Button btnProximoVencimento;
     @FXML
@@ -129,18 +115,357 @@ public class MainController implements Initializable {
         this.btnMedExcluir.setDisable(true);
         this.btnFornSalvar.setDisable(true);
         this.btnMedSalvar.setDisable(true);
+        this.btnEstoqueBaixo.setDisable(true);
+        this.btnFiltrarControlados.setDisable(true);
+        this.btnFiltrarNaoControlados.setDisable(true);
+        this.btnEstoqueFornecedor.setDisable(true);
+        this.btnProximoVencimento.setDisable(true);
 
 
         codigoField.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCodigo()));
         nomeField.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+        validadeField.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDataValidade()));
+        precoField.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPreco()));
         estoqueField.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantidadeEstoque()).asObject());
-        //validadeField; precoField;
-        //    @FXML
-        //    private TableColumn<Medicamento, Integer> estoqueField;
-        //    @FXML
-        //    private TableColumn<Medicamento, Boolean> tipoField;
-        //    @FXML
-        //    private TableColumn<Medicamento, Fornecedor> fornecedorField;
+        tipoField.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().isControlado()).asObject());
+       }
+    @FXML
+    public void onBtnMedNovo(){
+        this.medicamento = new Medicamento();
+        limparFormularioMed();
+        this.btnMedSalvar.setDisable(false);
+    }
+    @FXML
+    public void onBtnFornNovo(){
+        this.fornecedor = new Fornecedor();
+        limparFormularioForn();
+        this.btnFornSalvar.setDisable(false);
+    }
+    @FXML
+    public void onBtnCarregar(){
+        this.btnEstoqueBaixo.setDisable(false);
+        this.btnFiltrarControlados.setDisable(false);
+        this.btnFiltrarNaoControlados.setDisable(false);
+        this.btnEstoqueFornecedor.setDisable(false);
+        this.btnProximoVencimento.setDisable(false);
 
+        lerDadosDoArquivoMedicamentos();
+        lerDadosDoArquivoFornecedores();
+        updateTableView();
+    }
+    @FXML
+    public void onBtnExcluirMed() {
+        String codigo = txtCodigo.getText();
+        excluirMedicamento(codigo);
+    }
+
+    @FXML
+    public void onBtnExcluirForn() {
+        String cnpj = txtCNPJ.getText();
+        excluirFornecedor(cnpj);
+    }
+    @FXML
+    public void onBtnSalvarMed() {
+        if (this.medicamento != null) {
+            lerFormularioMed();
+            this.medicamentoList.add(this.medicamento);
+            gravarMedicamentosEmArquivo((List<Medicamento>) this.medicamento);
+            updateTableView();
+
+        }
+    }
+    @FXML
+    public void onBtnSalvarForn() {
+        if (this.fornecedor != null) {
+            lerFormularioForn();
+            this.fornecedorList.add(this.fornecedor);
+            gravarFornecedoresEmArquivo((List<Fornecedor>) this.fornecedor);
+            updateTableView();
+
+        }
+    }
+    @FXML
+    public void onBtnFiltrarControlados() {
+        List<Medicamento> medicamentosFiltrados = medicamentoList.stream()
+                .filter(Medicamento::isControlado)
+                .collect(Collectors.toList());
+
+       updateTableView1(medicamentosFiltrados);
+    }
+    @FXML
+    public void onBtnProximoVencimento(){
+        LocalDate hoje = LocalDate.now();
+        LocalDate dataLimite = hoje.plusDays(30);
+
+        List<Medicamento> medicamentosProximosVencimento = medicamentoList.stream()
+                .filter(medicamento -> medicamento.getDataValidade().isBefore(dataLimite) &&
+                        medicamento.getDataValidade().isAfter(hoje))
+                .collect(Collectors.toList());
+        updateTableView1(medicamentosProximosVencimento);
+    }
+    @FXML
+    public void onBtnFiltrarEstoqueBaixo() {
+        List<Medicamento> medicamentosEstoqueBaixo = medicamentoList.stream()
+                .filter(medicamento -> medicamento.getQuantidadeEstoque() < 5)
+                .collect(Collectors.toList());
+        updateTableView1(medicamentosEstoqueBaixo);
+    }
+    @FXML
+    public void onBtnCalcularValorTotalEstoque(){
+        calcularValorTotalEstoquePorFornecedor();
+    }
+    @FXML
+    public void onBtnListarNaoControlados() {
+        List<Medicamento> medicamentosNaoControlados = medicamentoList.stream()
+                .filter(medicamento -> !medicamento.isControlado())
+                .collect(Collectors.toList());
+
+        updateTableView1(medicamentosNaoControlados);
+    }
+    //===============================================================
+    //METODOS
+
+    public Medicamento lerFormularioMed() {
+        this.medicamento.setCodigo(this.txtCodigo.getText());
+        this.medicamento.setNome(this.txtNome.getText());
+        this.medicamento.setDescricao(this.txtDescricao.getText());
+        this.medicamento.setPricipioAtivo(this.txtPricipioAtivo.getText());
+
+        this.medicamento.setDataValidade(LocalDate.parse(this.txtDataValidade.getText()));
+
+        this.medicamento.setQuantidadeEstoque(Integer.parseInt(this.txtQuantidade.getText()));
+
+        String precoString = this.txtPreco.getText();
+        BigDecimal preco = new BigDecimal(precoString);
+        this.medicamento.setPreco(String.valueOf(preco));
+
+        this.medicamento.setControlado(Boolean.parseBoolean(this.txtTipo.getText()));
+        this.medicamento.setFornecedor(this.txtFornecedor.getText());
+
+        return this.medicamento;
+    }
+    public Fornecedor lerFormularioForn(){
+        this.fornecedor.setCnpj(this.txtCNPJ.getText());
+        this.fornecedor.setRazaoSocial(this.txtRazaoSocial.getText());
+        this.fornecedor.setTelefone(this.txtTelefone.getText());
+        this.fornecedor.setEmail(this.txtEmail.getText());
+        this.fornecedor.setCidade(this.txtCidade.getText());
+        this.fornecedor.setEstado(this.txtEstado.getText());
+        return this.fornecedor;
+    }
+
+    public void limparFormularioMed(){
+        this.txtCidade.setText("");
+        this.txtNome.setText("");
+        this.txtDescricao.setText("");
+        this.txtPricipioAtivo.setText("");
+        this.txtDataValidade.setText("");
+        this.txtQuantidade.setText("");
+        this.txtPreco.setText("");
+        this.txtTipo.setText("");
+        this.txtFornecedor.setText("");
+    }
+    public void limparFormularioForn(){
+       this.txtCNPJ.setText("");
+       this.txtRazaoSocial.setText("");
+       this.txtTelefone.setText("");
+       this.txtEmail.setText("");
+       this.txtCidade.setText("");
+       this.txtEstado.setText("");
+    }
+
+    public void lerDadosDoArquivoFornecedores() {
+        File file = new File("fornecedores.txt");
+
+        if (!file.exists() || file.length() == 0) {
+            System.out.println("O arquivo 'fornecedores.txt' não existe ou está vazio.");
+            return;
+        }
+        try {
+            List<Fornecedor> fornecedores = Files.lines(Paths.get("fornecedores.txt"))
+                    .map(linha -> linha.split(","))
+                    .filter(dados -> dados.length == 6)
+                    .map(dados -> {
+                        Fornecedor fornecedor = new Fornecedor( );
+                        fornecedor.setCnpj(dados[0]);
+                        fornecedor.setRazaoSocial(dados[1]);
+                        fornecedor.setTelefone(dados[2]);
+                        fornecedor.setEmail(dados[3]);
+                        fornecedor.setCidade(dados[4]);
+                        fornecedor.setEstado(dados[5]);
+                        return fornecedor;
+                    })
+                    .collect(Collectors.toList());
+
+            fornecedorList.addAll(fornecedores);
+            fornecedores.forEach(fornecedor ->
+                    System.out.printf("CNPJ: %s, Razão Social: %s, Telefone: %s, Email: %s, Cidade: %s, Estado: %s%n",
+                            fornecedor.getCnpj(), fornecedor.getRazaoSocial(), fornecedor.getTelefone(),
+                            fornecedor.getEmail(), fornecedor.getCidade(), fornecedor.getEstado())
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void lerDadosDoArquivoMedicamentos() {
+        File file = new File("medicamentos.txt");
+
+        if (!file.exists() || file.length() == 0) {
+            System.out.println("O arquivo 'medicamentos.txt' não existe ou está vazio.");
+            return;
+        }
+        try {
+            List<Medicamento> medicamentos = Files.lines(Paths.get("medicamentos.txt"))
+                    .map(linha -> linha.split(","))
+                    .filter(dados -> dados.length == 9)
+                    .map(dados -> {
+                        try {
+                            String codigo = dados[0];
+                            String nome = dados[1];
+                            String descricao = dados[2];
+                            String pricipioAtivo = dados[3];
+                            LocalDate dataValidade = LocalDate.parse(dados[4]);
+                            int quantidadeEstoque = Integer.parseInt(dados[5]);
+                            BigDecimal preco = new BigDecimal(dados[6]);
+                            boolean controlado = Boolean.parseBoolean(dados[7]);
+                            String fornecedor = dados[8];
+
+                            Medicamento medicamento = new Medicamento();
+                            medicamento.setCodigo(codigo);
+                            medicamento.setNome(nome);
+                            medicamento.setDescricao(descricao);
+                            medicamento.setPricipioAtivo(pricipioAtivo);
+                            medicamento.setDataValidade(dataValidade);
+                            medicamento.setQuantidadeEstoque(quantidadeEstoque);
+                            medicamento.setPreco(String.valueOf(preco));
+                            medicamento.setControlado(controlado);
+                            medicamento.setFornecedor(fornecedor);
+                            return medicamento;
+                        } catch (Exception e) {
+                            System.err.println("Erro ao converter dados da linha: " + String.join(",", dados));
+                            return null;
+                        }
+                    })
+                    .filter(medicamento -> medicamento != null)
+                    .collect(Collectors.toList());
+
+            medicamentoList.addAll(medicamentos);
+            medicamentos.forEach(medicamento ->
+                    System.out.printf("Código: %s, Nome: %s, Descrição: %s, Princípio Ativo: %s, Data de Validade: %s, " +
+                                    "Quantidade em Estoque: %d, Preço: %.2f, Controlado: %b, Fornecedor: %s%n",
+                            medicamento.getCodigo(), medicamento.getNome(), medicamento.getDescricao(),
+                            medicamento.getPricipioAtivo(), medicamento.getDataValidade(), medicamento.getQuantidadeEstoque(),
+                            medicamento.getPreco(), medicamento.isControlado(), medicamento.getFornecedor())
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gravarFornecedoresEmArquivo(List<Fornecedor> fornecedores) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("fornecedores.txt"))) {
+            for (Fornecedor fornecedor : fornecedores) {
+                String linha = String.join(",",
+                        fornecedor.getCnpj(),
+                        fornecedor.getRazaoSocial(),
+                        fornecedor.getTelefone(),
+                        fornecedor.getEmail(),
+                        fornecedor.getCidade(),
+                        fornecedor.getEstado());
+                writer.write(linha);
+                writer.newLine();
+            }
+            System.out.println("Fornecedores gravados com sucesso em 'fornecedores.txt'.");
+        } catch (IOException e) {
+            System.err.println("Erro ao gravar fornecedores em arquivo: " + e.getMessage());
+        }
+    }
+    public void gravarMedicamentosEmArquivo(List<Medicamento> medicamentos) {
+
+        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("medicamentos.txt"))) {
+            for (Medicamento medicamento : medicamentos) {
+                String linha = String.join(",",
+                        medicamento.getCodigo(),
+                        medicamento.getNome(),
+                        medicamento.getDescricao(),
+                        medicamento.getPricipioAtivo(),
+                        medicamento.getDataValidade().toString(),
+                        String.valueOf(medicamento.getQuantidadeEstoque()),
+                        decimalFormat.format(medicamento.getPreco()), // Formata o preço como String
+                        String.valueOf(medicamento.isControlado()),
+                        medicamento.getFornecedor());
+                writer.write(linha);
+                writer.newLine();
+            }
+            System.out.println("Medicamentos gravados com sucesso em 'medicamentos.txt'.");
+        } catch (IOException e) {
+            System.err.println("Erro ao gravar medicamentos em arquivo: " + e.getMessage());
+        }
+    }
+
+    public void excluirMedicamento(String codigo) {
+        Medicamento medicamentoParaRemover = null;
+        for (Medicamento medicamento : medicamentoList) {
+            if (medicamento.getCodigo().equals(codigo)) {
+                medicamentoParaRemover = medicamento;
+                break;
+            }
+        }
+        if (medicamentoParaRemover != null) {
+            medicamentoList.remove(medicamentoParaRemover);
+            System.out.println("Medicamento excluído com sucesso.");
+            gravarMedicamentosEmArquivo(medicamentoList);
+            updateTableView(); // Atualiza a tabela
+        } else {
+            System.out.println("Medicamento não encontrado.");
+        }
+    }
+
+    public void excluirFornecedor(String cnpj) {
+        Fornecedor fornecedorParaRemover = null;
+        for (Fornecedor fornecedor : fornecedorList) {
+            if (fornecedor.getCnpj().equals(cnpj)) {
+                fornecedorParaRemover = fornecedor;
+                break;
+            }
+        }
+        if (fornecedorParaRemover != null) {
+            fornecedorList.remove(fornecedorParaRemover);
+            System.out.println("Fornecedor excluído com sucesso.");
+            gravarFornecedoresEmArquivo(fornecedorList);
+        } else {
+            System.out.println("Fornecedor não encontrado.");
+        }
+
+    }
+    public void calcularValorTotalEstoquePorFornecedor() {
+        Map<String, BigDecimal> totalPorFornecedor = new HashMap<>();
+
+        for (Medicamento medicamento : medicamentoList) {
+            String fornecedor = medicamento.getFornecedor();
+            BigDecimal precoUnitario = new BigDecimal(String.valueOf(medicamento.getPreco()));
+            int quantidadeEstoque = medicamento.getQuantidadeEstoque();
+
+            BigDecimal valorTotalMedicamento = precoUnitario.multiply(BigDecimal.valueOf(quantidadeEstoque));
+
+            totalPorFornecedor.merge(fornecedor, valorTotalMedicamento, BigDecimal::add);
+        }
+
+        StringBuilder resultado = new StringBuilder();
+        totalPorFornecedor.forEach((fornecedor, total) ->
+                resultado.append(String.format("Fornecedor: %s, Valor Total do Estoque: %.2f%n", fornecedor, total))
+        );
+        labelResultadoAqui.setText(resultado.toString());
+    }
+    public void updateTableView1(List<Medicamento> medicamentos) {
+        ObservableList<Medicamento> observableList = FXCollections.observableArrayList(medicamentos);
+        tbMedicamento.setItems(observableList);
+    }
+    public void updateTableView(){
+        ObservableList<Medicamento> observableList = FXCollections.observableArrayList(medicamentoList);
+        tbMedicamento.setItems(observableList);
     }
 }
