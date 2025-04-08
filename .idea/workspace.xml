@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="560a36c7-fbc6-453a-a9ee-907053ff85b5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/MainApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/model/entity/Fornecedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/model/entity/Fornecedor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/model/entity/Medicamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/model/entity/Medicamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/utils/PathFXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/utils/PathFXML.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sysmedicamentos/view/MainView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

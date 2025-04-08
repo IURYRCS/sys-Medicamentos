@@ -200,6 +200,7 @@
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
                                                       <Label prefHeight="17.0" prefWidth="285.0" text="CNPJ">
@@ -262,7 +263,7 @@
                                                             <Insets bottom="1.0" left="12.0" right="1.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <HBox prefHeight="68.0" prefWidth="282.0" GridPane.rowIndex="12">
+                                                      <HBox prefHeight="68.0" prefWidth="282.0" GridPane.rowIndex="13">
                                                          <children>
                                                             <Button fx:id="btnFornNovo" mnemonicParsing="false" onAction="#onBtnFornNovo" prefHeight="30.0" prefWidth="100.0" text="NOVO">
                                                                <HBox.margin>
@@ -297,29 +298,30 @@
                      <children>
                         <TableView fx:id="tbMedicamento" prefHeight="269.0" prefWidth="362.0">
                           <columns>
-                            <TableColumn fx:id="codigoField" prefWidth="60.0" text="CODIGO" />
-                            <TableColumn fx:id="nomeField" prefWidth="190.0" text="NOME" />
-                              <TableColumn fx:id="validadeField" prefWidth="63.0" text="VAL" />
-                              <TableColumn fx:id="precoField" prefWidth="55.0" text="PREÇO" />
-                              <TableColumn fx:id="estoqueField" prefWidth="66.0" text="ESTOQUE" />
-                              <TableColumn fx:id="tipoField" prefWidth="90.0" text="CONTROLADO" />
-                              <TableColumn fx:id="fornecedorField" prefWidth="106.0" text="FORNECEDOR" />
+                            <TableColumn fx:id="codigoField" prefWidth="81.0" text="CODIGO" />
+                            <TableColumn fx:id="nomeField" prefWidth="156.0" text="NOME" />
+                              <TableColumn fx:id="validadeField" prefWidth="76.0" text="VAL" />
+                              <TableColumn fx:id="precoField" text="PREÇO" />
+                              <TableColumn fx:id="estoqueField" prefWidth="63.0" text="ESTOQUE" />
+                              <TableColumn fx:id="tipoField" prefWidth="89.0" text="CONTROLADO" />
+                              <TableColumn fx:id="fornecedorField" prefWidth="85.0" text="FORNECEDOR" />
                           </columns>
                         </TableView>
-                        <HBox prefHeight="116.0" prefWidth="352.0">
+                        <HBox prefHeight="316.0" prefWidth="633.0">
                            <children>
-                              <VBox prefHeight="140.0" prefWidth="138.0">
+                              <VBox prefHeight="196.0" prefWidth="422.0">
                                  <children>
-                                    <Button fx:id="btnCarregar" mnemonicParsing="false" onAction="#onBtnCarregar" prefHeight="56.0" prefWidth="114.0" text="CARREGAR">
+                                    <Button fx:id="btnCarregar" mnemonicParsing="false" onAction="#onBtnCarregar" prefHeight="50.0" prefWidth="150.0" text="CARREGAR">
                                        <VBox.margin>
                                           <Insets bottom="5.0" left="10.0" right="5.0" top="15.0" />
                                        </VBox.margin>
                                     </Button>
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="140.0" prefWidth="166.0">
-                                 <children>
-                                    <Label fx:id="labelResultadoAqui" prefHeight="140.0" prefWidth="167.0">
+                                    <Button fx:id="btnSalvarArquivo" mnemonicParsing="false" onAction="#onBtnSalvarArquivo" prefHeight="50.0" prefWidth="150.0" text="SALVAR EM ARQUIVO">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="10.0" right="5.0" top="15.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Label fx:id="labelResultadoAqui" prefHeight="115.0" prefWidth="416.0">
                                        <VBox.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </VBox.margin>
@@ -328,7 +330,7 @@
                               </VBox>
                               <VBox prefHeight="140.0" prefWidth="212.0">
                                  <children>
-                                    <Button fx:id="btnFiltrarControlados" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="LISTAR CONTROLADOS">
+                                    <Button fx:id="btnFiltrarControlados" mnemonicParsing="false" onAction="#onBtnFiltrarControlados" prefHeight="30.0" prefWidth="200.0" text="LISTAR CONTROLADOS">
                                        <VBox.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </VBox.margin>
